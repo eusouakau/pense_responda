@@ -3,4 +3,4 @@
 class TeamData{
   String name;
  // File image;
-}
+} 

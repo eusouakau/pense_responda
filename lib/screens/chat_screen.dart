@@ -48,6 +48,7 @@ class ChatScreen extends StatelessWidget {
           ),
         ),
       ),
+      backgroundColor: const Color(0x4E4E4E),
     );
   }
 }

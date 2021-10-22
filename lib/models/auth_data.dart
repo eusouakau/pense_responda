@@ -26,13 +26,13 @@ class AuthData {
 
   Future<void> signup(String email, String name, String password) async {
     final url = new UsersWebService(false, true);
-    final response = await url.createUser(name, email, password);
+    final response = await url.createUser(name, email, password); 
     return response;
   }
 
   Future<String> login(String email, String password) async {
-    final url = new UsersWebService(false, true);
+    final url = new UsersWebService(false, true); 
     final response = await url.login(email, password);
     return response.body;
   }
-}
+} 

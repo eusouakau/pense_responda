@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:pense_responda/models/auth_data.dart';
 import 'package:pense_responda/screens/home_screen.dart';
@@ -38,11 +40,13 @@ class _AuthCardState extends State<AuthCard>
   @override
   Widget build(BuildContext context) {
     return Column(
-      // color: AppColors.darkBackgroundColor,
       children: [
         Container(
-          height: _authData.isSignup ? 350 : 290,
-          width: 300,
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(40, 40, 40, 1),
+          ),
+          height: _authData.isSignup ? 470 : 455,
+          width: 320,
           padding: EdgeInsets.all(25.0),
           child: Form(
             key: _form,
@@ -60,84 +64,166 @@ class _AuthCardState extends State<AuthCard>
       if (_authData.isSignup)
         TextFormField(
           controller: _controllerName,
-          decoration: InputDecoration(labelText: 'Nome'),
+          decoration: InputDecoration(
+            fillColor: Color.fromRGBO(30, 30, 30, 1),
+            filled: true,
+            labelText: 'Nome',
+            labelStyle: TextStyle(
+              color: Color.fromRGBO(200, 200, 200, 1),
+            ),
+            contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+            border: UnderlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
           onChanged: (value) => _data['name'] = _controllerName.text,
         ),
+      SizedBox(
+        height: 25
+      ),
       TextFormField(
         controller: _controllerEmail,
-        decoration: InputDecoration(labelText: 'E-mail'),
+        decoration: InputDecoration(
+          fillColor: Color.fromRGBO(30, 30, 30, 1),
+          filled: true,
+          labelText: 'E-mail',
+          labelStyle: TextStyle(
+            color: Color.fromRGBO(200, 200, 200, 1),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+          border: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
         onChanged: (value) => _data['email'] = _controllerEmail.text,
+      ),
+      SizedBox(
+        height: 25
       ),
       TextFormField(
         controller: _controllerPassword,
-        decoration: InputDecoration(labelText: 'Senha'),
+        decoration: InputDecoration(
+          fillColor: Color.fromRGBO(30, 30, 30, 1),
+          filled: true,
+          labelText: 'Senha',
+          labelStyle: TextStyle(
+            color: Color.fromRGBO(200, 200, 200, 1),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+          border: UnderlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
         obscureText: true,
         onChanged: (value) => _data['password'] = _controllerPassword.text,
       ),
-      SizedBox(height: 20),
+      SizedBox(height: _authData.isSignup ? 90 : 130),
       _authData.isSignup
-          ? ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).primaryColor,
-                textStyle: TextStyle(
-                    color: Theme.of(context).primaryTextTheme.button.color),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 8.0,
+          ? TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  left: 94,
+                  right: 94,
+                  top: 15,
+                  bottom: 15,
                 ),
-                elevation: 20,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                textStyle: const TextStyle(fontSize: 14),
+                backgroundColor: Colors.yellowAccent,
               ),
-              child: Text('CADASTRAR'),
+              child: Text(
+                'CADASTRAR',
+                style: TextStyle(
+                  color: Color.fromRGBO(45, 45, 45, 1),
+                ),
+              ),
               onPressed: () => onSignup(_data),
             )
-          : ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                elevation: 20,
-                primary: Theme.of(context).primaryColor,
-                textStyle: TextStyle(
-                    color: Theme.of(context).primaryTextTheme.button.color),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 8.0,
+          : TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  left: 106,
+                  right: 106,
+                  top: 15,
+                  bottom: 15,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                textStyle: const TextStyle(fontSize: 14),
+                backgroundColor: Colors.yellowAccent,
+              ),
+              child: Text(
+                'ENTRAR',
+                style: TextStyle(
+                  color: Color.fromRGBO(45, 45, 45, 1),
                 ),
               ),
-              child: Text('ENTRAR'),
-               onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ),
-                            );
-                          },
-              //() async {
-              //   userLogIn = await onLogin(_data);
-              //   if (userLogIn.isNotEmpty) {
-              //     Navigator.of(context).pushReplacement(
-              //       MaterialPageRoute(
-              //         builder: (context) => null,
-              //       ),
-              //     );
-              //   } else {
-              //     return Text('Email ou senha incorretos');
-              //   }
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
             ),
-      TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        child: Text(
-          _authData.isLogin ? 'CADASTRE-SE' : 'ENTRAR',
-          style: TextStyle(
-            color: Color.fromRGBO(255, 255, 255, 1),
-          ),
-        ),
-        onPressed: () {
-          setState(() {
-            _authData.toggleMode();
-          });
-        },
-      ),
+      SizedBox(height: 10),
+      _authData.isSignup
+          ? TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  left: 106,
+                  right: 106,
+                  top: 15,
+                  bottom: 15,
+                ),
+                textStyle: const TextStyle(fontSize: 14),
+                backgroundColor: Color.fromRGBO(50, 50, 50, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              child: Text(
+                'ENTRAR',
+                style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 5),
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  _authData.toggleMode();
+                });
+              },
+            )
+          : TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  left: 94,
+                  right: 94,
+                  top: 15,
+                  bottom: 15,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                textStyle: const TextStyle(fontSize: 14),
+                backgroundColor: Color.fromRGBO(50, 50, 50, 1),
+              ),
+              child: Text(
+                'CADASTRAR',
+                style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 5),
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  _authData.toggleMode();
+                });
+              },
+            ),
     ];
   }
 }

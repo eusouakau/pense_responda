@@ -1,34 +1,34 @@
 class User {
-  final int id;
   final String name;
-  final bool isOnline;
+  final String email;
+  final String password;
 
   User({
-    this.id,
     this.name,
-//  this.imageUrl,
-    this.isOnline,
+    this.email,
+    this.password,
   });
+  
+
+  Future<void> listAll(String name) async {
+    final url = new User(name: name);
+    final response = await url.team1(name); 
+    return response;
+  }
+
+  Future<String> team1(String name) async {
+    final url = new User(name: name);
+    final response = await url.team1(name); 
+    return response;
+  }
+
+
+
+
+
+
+
+
 }
 
-
-final User currentUser = User(
-  id: 0,
-  name: 'eu',
-//  imageUrl: '',
-  isOnline: true,
-);
-
-
-final User partner = User(
-  id: 1,
-  name: 'Fulano de Tal',
-//  imageUrl: '',
-  isOnline: true,
-);
-final User partner2 = User(
-  id: 2,
-  name: 'Outro Fulano',
-//  imageUrl: '',
-  isOnline: false,
-);
+  

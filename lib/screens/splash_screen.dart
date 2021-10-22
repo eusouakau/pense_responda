@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pense_responda/screens/auth_screen.dart';
-import 'package:pense_responda/utils/colors.dart';
+//import 'package:pense_responda/utils/colors.dart';
 import 'package:pense_responda/utils/images.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
         width: 500,
         height: 1500,
         decoration: BoxDecoration(
-          color: AppColors.darkBackgroundColor,
+          color: Color.fromRGBO(40, 40, 40, 1),
         ),
         child: Image.asset(AppImages.logo),
       ),

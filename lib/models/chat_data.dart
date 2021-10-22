@@ -22,6 +22,6 @@ class ChatData {
 
     final response = await url.sendTextMessage(message);
     return response;
-  }
+  } 
 
 }
