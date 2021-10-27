@@ -117,7 +117,7 @@ class _AuthCardState extends State<AuthCard>
         obscureText: true,
         onChanged: (value) => _data['password'] = _controllerPassword.text,
       ),
-      SizedBox(height: _authData.isSignup ? 90 : 130),
+      SizedBox(height: _authData.isSignup ? 80 : 130),
       _authData.isSignup
           ? TextButton(
               style: TextButton.styleFrom(

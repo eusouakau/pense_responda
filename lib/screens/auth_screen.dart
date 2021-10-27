@@ -26,17 +26,16 @@ class _AuthScreenState extends State<AuthScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(50, 90, 50, 15),
-                              child: Image.asset(AppImages.logo),
-                            ),
-                            SizedBox(height: 10),
-                            AuthCard(),
-                          ],
-                        ),),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(50, 80, 50, 0),
+                            child: Image.asset(AppImages.logo),
+                          ),
+                          AuthCard(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

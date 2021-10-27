@@ -34,7 +34,7 @@ class _TeamScreenState extends State<TeamScreen> {
         decoration: BoxDecoration(
           color: Color.fromRGBO(40, 40, 40, 1),
         ),
-        padding: EdgeInsets.only(top: 120, bottom: 25),
+        padding: EdgeInsets.only(top: 60, bottom: 40),
         child: Column(
           children: [
             SizedBox(height: 10),

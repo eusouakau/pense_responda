@@ -90,15 +90,15 @@ class _TeamCardState extends State<TeamCard> {
                 TextButton(
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.only(
-                      left: 105,
-                      right: 105,
+                      left: 95,
+                      right: 95,
                       top: 15,
                       bottom: 15,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    textStyle: const TextStyle(fontSize: 14),
+                    textStyle: const TextStyle(fontSize: 15),
                     backgroundColor: Colors.yellowAccent,
                   ),
                   child: Text(
@@ -113,15 +113,15 @@ class _TeamCardState extends State<TeamCard> {
                 TextButton(
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.only(
-                      left: 90,
-                      right: 90,
+                      left: 82,
+                      right: 82,
                       top: 15,
                       bottom: 15,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    textStyle: const TextStyle(fontSize: 14),
+                    textStyle: const TextStyle(fontSize: 15),
                     backgroundColor: Color.fromRGBO(0, 170, 255, 5),
                   ),
                   child: Text(

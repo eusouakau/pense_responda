@@ -30,7 +30,7 @@ class _StartScreenState extends State<StartScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 90.0),
+              padding: const EdgeInsets.only(top: 70.0),
               child: Column(
                 children: [
                   Container(
@@ -55,7 +55,7 @@ class _StartScreenState extends State<StartScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 70),
+            SizedBox(height: 50),
             StartCard(),
           ],
         ),

@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           color: Color.fromRGBO(40, 40, 40, 1),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 80, bottom: 200),
+          padding: const EdgeInsets.only(top: 80),
           child: Column(
             children: [
               Center(

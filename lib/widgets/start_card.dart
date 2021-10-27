@@ -15,7 +15,7 @@ class StartCard extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 60),
+                padding: const EdgeInsets.only(left: 48),
                 child: Row(
                   children: [
                     TextButton(
@@ -75,7 +75,7 @@ class StartCard extends StatelessWidget {
               ),
               SizedBox(height: 25),
               Padding(
-                padding: const EdgeInsets.only(left: 60),
+                padding: const EdgeInsets.only(left: 48),
                 child: Row(
                   children: [
                     TextButton(
@@ -140,7 +140,7 @@ class StartCard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 125),
+              SizedBox(height: 100),
               TextButton(
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.only(
