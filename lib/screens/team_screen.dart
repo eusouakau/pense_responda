@@ -30,35 +30,38 @@ class _TeamScreenState extends State<TeamScreen> {
           },
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(40, 40, 40, 1),
-        ),
-        padding: EdgeInsets.only(top: 60, bottom: 40),
-        child: Column(
-          children: [
-            SizedBox(height: 10),
-            Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  padding: EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 70,
-                  ),
-                  child: Text(
-                    'Formar equipe',
-                    style: TextStyle(
-                      color: Color.fromRGBO(185, 185, 185, 1),
-                      fontSize: 25,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(40, 40, 40, 1),
+          ),
+          padding: EdgeInsets.only(top: 60, bottom: 40),
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20.0),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 70,
+                    ),
+                    child: Text(
+                      'Formar equipe',
+                      style: TextStyle(
+                        color: Color.fromRGBO(185, 185, 185, 1),
+                        fontSize: 25,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 15),
-            TeamCard(),
-          ],
+                ],
+              ),
+              SizedBox(height: 25),
+              TeamCard(),
+              SizedBox(height: 25),
+            ],
+          ),
         ),
       ),
     );

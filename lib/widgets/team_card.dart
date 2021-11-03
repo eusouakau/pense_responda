@@ -1,5 +1,6 @@
 //import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:pense_responda/models/search_data.dart';
 //import 'package:pense_responda/models/team_data.dart';
 //import 'package:pense_responda/widgets/user_image_picker.dart';
 import 'package:pense_responda/models/user_model.dart';
@@ -17,11 +18,16 @@ class TeamCard extends StatefulWidget {
 }
 
 class _TeamCardState extends State<TeamCard> {
-  final User _user = User();
+  final SearchData _searchData = SearchData();
+  final Map<String, String> _name = {
+    'name': '',
+  };
 
-  Future<String> search(Map<String, String> map) async {
-    return await _user.team1(_user.name);
+  Future<void> search(Map<String, String> map) async {
+    return await _searchData.searchUser(map['name']);
   }
+
+  final _controllerSearch = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +42,7 @@ class _TeamCardState extends State<TeamCard> {
             child: Column(
               children: [
                 TextFormField(
+                  controller: _controllerSearch,
                   decoration: InputDecoration(
                     fillColor: Color.fromRGBO(30, 30, 30, 1),
                     filled: true,
@@ -43,13 +50,14 @@ class _TeamCardState extends State<TeamCard> {
                     labelText: 'Nome',
                     labelStyle: TextStyle(
                       color: Color.fromRGBO(200, 200, 200, 1),
+
                     ),
                     contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     border: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onChanged: (value) => null,
+                  onChanged: (value) => _name['name'] = _controllerSearch.text,
                 ),
                 SizedBox(height: 14),
                 TextFormField(

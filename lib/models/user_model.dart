@@ -10,12 +10,6 @@ class User {
   });
   
 
-  Future<void> listAll(String name) async {
-    final url = new User(name: name);
-    final response = await url.team1(name); 
-    return response;
-  }
-
   Future<String> team1(String name) async {
     final url = new User(name: name);
     final response = await url.team1(name); 

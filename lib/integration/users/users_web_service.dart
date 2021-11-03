@@ -30,4 +30,9 @@ class UsersWebService extends UsersBaseClient {
     return http
         .post(url, body: {'name': name, 'email': email, 'password': password});
   }
+
+   Future<http.Response> searchUser(String name) {
+    final Object url = wsURL + 'search';
+      return http.post(url, body: {'name': name});
+  }
 }
