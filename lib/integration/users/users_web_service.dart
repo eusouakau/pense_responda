@@ -12,7 +12,7 @@ class UsersWebService extends UsersBaseClient {
   /// [String tokenChannel] indicates the token a channel (optional)
   UsersWebService(bool enableSecurity, bool devMode, [String tokenChannel])
       : super(enableSecurity, devMode) {
-    // sets the tocken of a channel
+    // sets the token of a channel
     token = tokenChannel;
   }
 
@@ -32,7 +32,7 @@ class UsersWebService extends UsersBaseClient {
   }
 
    Future<http.Response> searchUser(String name) {
-    final Object url = wsURL + 'search';
+    final Object url = wsURL + 'playerlist';
       return http.post(url, body: {'name': name});
   }
 }

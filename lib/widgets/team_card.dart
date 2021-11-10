@@ -92,7 +92,7 @@ class _TeamCardState extends State<TeamCard> {
                     ),
                   ),
 
-                  onChanged: (_user) => {}, //team1(_user.name),
+                  onChanged: (value) => _name['name'] = _controllerSearch.text,
                 ),
                 SizedBox(height: 150),
                 TextButton(

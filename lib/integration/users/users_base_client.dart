@@ -41,11 +41,11 @@ class UsersBaseClient {
   /// [bool enableSecurity] indicates if will be used a secure protocol
   /// and [bool devMode] changes the URL of remove for development mode
   UsersBaseClient(bool enableSecurity, bool devMode) {
-    app = 'orion-users-service';
+    app = 'orion-game-service';
     host = '10.0.2.2';
     port = '9080';
-    wsEndpoint = 'orion-users-service/users';
-    socketEndpoint = 'usersws';
+    wsEndpoint = 'orion-game-service/game';
+    socketEndpoint = 'gamews';
     api = 'api/v1';
 
     changeServiceURL(enableSecurity, devMode, host, port);

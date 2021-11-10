@@ -10,9 +10,9 @@ class User {
   });
   
 
-  Future<String> team1(String name) async {
+  Future<String> playerteam(String name) async {
     final url = new User(name: name);
-    final response = await url.team1(name); 
+    final response = await url.playerteam(name); 
     return response;
   }
 
