@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pense_responda/screens/splash_screen.dart';
 import 'package:pense_responda/screens/start_screen.dart';
+import 'package:pense_responda/widgets/search.dart';
 
 import './screens/auth_screen.dart';
 import './utils/app_routes.dart';

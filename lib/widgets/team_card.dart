@@ -18,16 +18,40 @@ class TeamCard extends StatefulWidget {
 }
 
 class _TeamCardState extends State<TeamCard> {
-  final SearchData _searchData = SearchData();
-  final Map<String, String> _name = {
-    'name': '',
-  };
+  Widget appBarTitle = new Text("Search Sample", style: new TextStyle(color: Colors.white),);
+  Icon actionIcon = new Icon(Icons.search, color: Colors.white,);
+  final SearchData _searchData = new SearchData();
+  final TextEditingController _searchQuery = new TextEditingController();
+  List<String> _list;
+  bool _IsSearching;
+  String _searchText = "";
 
-  Future<void> search(Map<String, String> map) async {
-    return await _searchData.searchUser(map['name']);
+  _SearchState() {
+    _searchQuery.addListener(() {
+      if (_searchQuery.text.isEmpty) {
+        setState(() {
+          _IsSearching = false;
+          _searchText = "";
+        });
+      } else {
+        setState(() {
+          _IsSearching = true;
+          _searchText = _searchQuery.text;
+        });
+      }
+    });
   }
 
-  final _controllerSearch = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _IsSearching = false;
+    init();
+  }
+
+  void init() {
+    List<User> _list = [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +66,7 @@ class _TeamCardState extends State<TeamCard> {
             child: Column(
               children: [
                 TextFormField(
-                  controller: _controllerSearch,
+                  controller: _searchQuery,
                   decoration: InputDecoration(
                     fillColor: Color.fromRGBO(30, 30, 30, 1),
                     filled: true,
@@ -50,14 +74,13 @@ class _TeamCardState extends State<TeamCard> {
                     labelText: 'Nome',
                     labelStyle: TextStyle(
                       color: Color.fromRGBO(200, 200, 200, 1),
-
                     ),
                     contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     border: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onChanged: (value) => _name['name'] = _controllerSearch.text,
+ //                 onChanged: (value) => _name['name'] = _searchQuery.text,
                 ),
                 SizedBox(height: 14),
                 TextFormField(
@@ -91,8 +114,16 @@ class _TeamCardState extends State<TeamCard> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-
-                  onChanged: (value) => _name['name'] = _controllerSearch.text,
+                  onChanged: (value) {
+                    //=> _name['name'] = _controllerSearch.text
+                    return Container(
+                      child: new ListView(
+                        padding: new EdgeInsets.symmetric(vertical: 8.0),
+                        children:
+                            _IsSearching ? _buildSearchUser() : _buildList(),
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(height: 150),
                 TextButton(
@@ -146,5 +177,56 @@ class _TeamCardState extends State<TeamCard> {
         ],
       ),
     );
+    
   }
+  
+  List<ChildItem> _buildList() {
+    return _list.map((contact) => new ChildItem(contact)).toList();
+  }
+
+  List<ChildItem> _buildSearchUser() {
+    if (_searchText.isEmpty) {
+      return _list.map((contact) => new ChildItem(contact))
+          .toList();
+    }
+    else {
+      List<String> _searchList = List();
+      for (int i = 0; i < _list.length; i++) {
+        String  name = _list.elementAt(i);
+        if (name.toLowerCase().contains(_searchText.toLowerCase())) {
+          _searchList.add(name);
+        }
+      }
+      return _searchList.map((contact) => new ChildItem(contact))
+          .toList();
+    }
+  }
+  void _handleSearchStart() {
+    setState(() {
+      _IsSearching = true;
+    });
+  }
+
+  void _handleSearchEnd() {
+    setState(() {
+      this.actionIcon = new Icon(Icons.search, color: Colors.white,);
+      this.appBarTitle =
+      new Text("Search Sample", style: new TextStyle(color: Colors.white),);
+      _IsSearching = false;
+      _searchQuery.clear();
+    });
+  }
+
 }
+
+class ChildItem extends StatelessWidget {
+  final String name;
+  ChildItem(this.name);
+  @override
+  Widget build(BuildContext context) {
+    return new ListTile(title: new Text(this.name));
+  }
+
+}
+
+  
